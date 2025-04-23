@@ -1,0 +1,18 @@
+meta {
+  name: Ajouter une tâche
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:5000/api/tasks
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Ajouter deux requete POST et Get dans l'outil Bruno",
+    "completed": false
+  }
+}
