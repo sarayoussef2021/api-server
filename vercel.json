@@ -2,16 +2,16 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/index.js",  // Assure-toi que ce chemin est correct vers le fichier index.js exportant ton app
+            "src": "api/index.js", 
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/api/(.*)",  // Redirige toutes les requêtes vers l'API vers index.js
-            "dest": "/api/index.js",  // Assure-toi que le fichier de destination est correct
+            "src": "/api/(.*)", 
+            "dest": "/api/index.js",  
             "headers": {
-                "Access-Control-Allow-Origin": "https://celadon-dusk-483980.netlify.app",  // Frontend de Netlify, sans la barre oblique
+                "Access-Control-Allow-Origin": "https://celadon-dusk-483980.netlify.app",  
                 "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                 "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
                 "Access-Control-Allow-Credentials": "true"
