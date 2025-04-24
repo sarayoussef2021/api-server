@@ -15,13 +15,13 @@ const app = express();
 
 // Middleware CORS
 app.use(cors({
-  origin: 'https://celadon-dusk-483980.netlify.app', // Ton frontend sur Netlify
+  origin: 'https://celadon-dusk-483980.netlify.app',
   credentials: true
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Debug temporaire de la variable d'environnement
+// Debug temporaire
 console.log('MongoDB URI:', process.env.MONGODB_URI);
 
 // Connexion MongoDB
@@ -54,5 +54,5 @@ app.post('/api/users/upload-profile', authMiddleware, upload.single('profileImag
   res.status(200).json({ message: '🖼️ Fichier uploadé avec succès', filename: req.file.filename });
 });
 
-// Exportation de l'application pour Vercel
-module.exports = app; // C'est ici que tu exportes ton app Express pour que Vercel l'exécute
+// Exportation de l'app pour Vercel
+module.exports = app;
