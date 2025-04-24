@@ -14,7 +14,10 @@ const authMiddleware = require('./middleware/authMiddleware');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://celadon-dusk-483980.netlify.app/', // ton frontend sur Netlify
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
