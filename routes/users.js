@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const authMiddleware = require('../middleware/auth'); // Middleware JWT
+const authMiddleware = require('../middleware/authMiddleware'); // Middleware JWT
 const upload = require('../middleware/uploadMiddleware'); // Pour gérer le fichier
 const router = express.Router();
 

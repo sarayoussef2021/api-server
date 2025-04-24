@@ -1,7 +1,7 @@
 // api-server/routes/tasks.js
 const express = require('express');
 const Task = require('../models/Task');
-const authMiddleware = require('../middleware/auth'); // Middleware pour vérifier l'authentification
+const authMiddleware = require('../middleware/authMiddleware'); // Middleware pour vérifier l'authentification
 const router = express.Router();
 
 // Route pour obtenir toutes les tâches
