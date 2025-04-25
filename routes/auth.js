@@ -2,7 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User'); // Assure-toi que ton modèle User existe
+const User = require('../models/User'); // Assure-toi que ce fichier existe
 const router = express.Router();
 
 // Route d'inscription
@@ -29,11 +29,13 @@ router.post('/signup', async (req, res) => {
 
     await user.save();
 
-    // Générer un token JWT
-    //const token = jwt.sign({ userId: user._id }, 'secretKey', { expiresIn: '1h' });
+    // Générer un token JWT (⚠️ en utilisant la variable d’environnement)
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    return res.status(201).json({ token, user: { id: user._id, fullName: user.fullName, email: user.email } });
+    return res.status(201).json({
+      token,
+      user: { id: user._id, fullName: user.fullName, email: user.email }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur serveur lors de l'inscription" });
@@ -58,9 +60,12 @@ router.post('/login', async (req, res) => {
     }
 
     // Générer un token JWT
-    //const token = jwt.sign({ userId: user._id }, 'secretKey', { expiresIn: '1h' });
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    return res.status(200).json({ token, user: { id: user._id, fullName: user.fullName, email: user.email } });
+
+    return res.status(200).json({
+      token,
+      user: { id: user._id, fullName: user.fullName, email: user.email }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erreur serveur lors de la connexion" });
